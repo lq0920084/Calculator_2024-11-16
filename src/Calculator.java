@@ -1,27 +1,29 @@
-
-
-public class Calculator {
-    //연산자를 받을 추상메서드 Operator를 선언합니다.
-    private AbstractOperator Operator;
-    //계산할 첫번째 숫자를 받을 FIrstNumber를 선언합니다
-    private String First_Number;
-    //계산할 두번째 숫자를 받을 SecondNumber를 선언합니다.
-    private String Second_Number;
-    //캡슐화를 위해 setter를 사용해 Operator를 설정하도록 작성합니다.
-    public void setOperator(AbstractOperator Operator){
-        this.Operator = Operator;
+public class Calculator<T extends Number> {
+    //연산자를 받을 추상메서드 선언.
+    AbstractOperator AbstractOperator;
+    //첫번째 숫자를 받을 제너릭 선언.
+    T First_Number;
+    //두번째 숫자를 받을 제너릭 선언.
+    T Second_Number;
+    //연산자를 설정할 setter 선언.
+    public void SetOperator(AbstractOperator AbstractOperator){
+        this.AbstractOperator = AbstractOperator;
     }
-    //캡슐화를 위해 setter를 사용해 FirstNumber를 설정하도록 작성합니다.
-    public void setFirstNumber(String First_Number){
-        this.First_Number=First_Number;
+
+    ///첫번째 제너릭을 설정할 setter 선언.
+    public void SetFirst_Number(T First_Number){
+        this.First_Number = First_Number;
     }
-    //캡슐화를 위해 setter를 사용해 SecondNumber를 설정하도록 작성합니다.
-    public void setSecondNumber(String Second_Number){
+
+    ///두번째 제너릭을 설정할 setter 선언.
+    public void SetSecond_Number(T Second_Number){
         this.Second_Number = Second_Number;
     }
-    //모든 값을 받은 후 계산을 진행할 calculate 메서드를 만듭니다.
-    public String calculate(){
-        return this.Operator.Operate(this.First_Number,this.Second_Number);
+
+    //계산할 메서드 선언.
+    public T Calculate(){
+        return AbstractOperator.Operate(this.First_Number,this.Second_Number);
     }
+
 
 }
